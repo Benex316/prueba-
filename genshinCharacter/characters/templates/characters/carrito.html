@@ -1,0 +1,48 @@
+{% extends 'characters/base.html' %}
+
+{% load static %}
+
+
+
+<body>
+    {% block content %}
+    <br><br><br><br><br><br><br><br><br><br>
+
+    <div class="container">
+        <div class="container">
+            <div class="row">
+                <div class="col-sm">
+                    <img src="{% static '/media/fotos/GI.png' %}" width="150px" alt="My image">
+                </div>
+                <div class="col-sm">
+                    juego de genshin
+                </div>
+                <div class="col-xm">
+                    {{ products.precio }}
+                </div>
+                <div class="col-sm">
+                    5
+                </div>
+                <div class="col-sm">
+                    $15000
+                </div>
+            </div>
+        </div>
+        <br>
+        <div class="row">
+            <button type="submit" class="btn btn-primary" name="opcion" value="Ingresar" id="elimi">Eliminar del
+                carrito</button>
+
+            <button type="submit" class="btn btn-primary" name="opcion" value="Ingresar" id="limpiar"
+                style="margin-left: 10%;">limpiar
+                carrito</button>
+
+        </div>
+    </div>
+    {% endblock %}
+</body>
+
+<footer>
+    <p> Total de compras: {{ compras }}</p>
+    <button type="submit" class="btn btn-primary" name="opcion" value="Ingresar" id="comprar">comprar</button>
+</footer>

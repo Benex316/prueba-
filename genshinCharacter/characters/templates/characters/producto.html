@@ -1,0 +1,45 @@
+{% extends 'characters/base.html' %}
+
+
+
+{% load static %}
+
+<body>
+    {% block content %}
+    <br><br><br><br>
+    <div class="container">
+        <div class="row">
+            <img src="{% static '/media/fotos/GI.png' %}" width="150px" alt="My image">
+            {% for product in precio %}
+            <p>{{ product.precio }}</p>
+            <p>{{ product.stock }}</p>
+
+
+            {% endfor %}
+            <p>juego de genshin</p>
+            <p style="text-align: left;">Lorem ipsum dolor sit amet consectetur adipisicing elit. Ex consectetur
+                officiis nesciunt fuga tenetur
+                ipsum cupiditate animi quod possimus cumque. Numquam laudantium corporis est </p>
+            <div class="form-group">
+                <label for="compra">Eliga la cantidad que va a comprar</label>
+                <select class="form-control" id="compra">
+                    <option>1</option>
+                    <option>2</option>
+                    <option>3</option>
+                    <option>4</option>
+                    <option>5</option>
+                </select>
+            </div>
+
+        </div>
+        <br><br>
+        <div class="row">
+
+            <button type="submit" class="btn btn-primary" name="opcion" value="Ingresar" id="but">Agregar al
+                carrito
+                de compra</button>
+        </div>
+    </div>
+    {% endblock %}
+
+</body>
