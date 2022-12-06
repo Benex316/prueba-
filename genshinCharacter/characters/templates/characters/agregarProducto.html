@@ -1,0 +1,42 @@
+{% extends 'characters/base.html' %}
+{% load static %}
+
+
+{% block content %}
+
+<form action="agregarProducto" method="post" enctype="multipart/form-data">
+    {% csrf_token %}
+    <div class="container">
+        <div class="row">
+            <div class="col-xs-12">
+
+                <label for="producto">Producto</label><br>
+                <input type="text" name="producto" class="form-control"> <br>
+
+                <label for="descripcion" class="form-label">Descripcion</label>
+                <input type="text" name="descripcion" class="form-control" row="5"><br>
+
+                <label for="precio">Precio</label><br>
+                <input type="number" name="precio"  class="form-control"><br>
+
+                <label for="stock" class="form-label">Stock</label>
+                <input type="number" name="stock" class="form-control"><br>
+
+                <label for="foto" class="form-label">Imagen</label>
+                <input class="form-control" type="file" name="foto">
+                <br>
+
+
+
+                <button type="submit" class="btn btn-primary" name="opcion" value="Agregar">Agregar</button>
+            
+
+
+                <div id="idMensajes">
+
+                    {%if mensaje %}
+            
+                        {{mensaje}}
+                    {%endif%}
+                </div>
+{% endblock %}

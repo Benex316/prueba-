@@ -1,5 +1,5 @@
 from django.shortcuts import render
-from .models import Personaje, Usuario
+from .models import Personaje, Usuario, carroCompra, Producto
 from datetime import datetime
 
 # Create your views here.
@@ -228,11 +228,60 @@ def carrito(request):
     return render(request, 'characters/carrito.html', context)
 
 
-def products(request):
-    precio = ["$10000"]
-    stock = ["5"]
-    context = {"precio": precio, "stock": stock}
-    return precio,context,stock
+
+def agregarCarrito(request):
+    print("Estoy en el carrito culiao")
+    context = {}
+    if request.method=="POST":
+        print("Estoy dentro del post")
+        opcion=request.method.GET("opcion", " ")
+        print("opcion"+ opcion)
+        if opcion == "agregarProducto":
+            print("Mandemos la wea")
+            producto = request.POST["producto"]
+            descripcion = request.POST["descripcion"]
+            precio = request.POST["precio"]
+            stock = request.POST["stock"]
+            foto = request.FILE["foto"]
+
+            if producto != "" and descripcion != "" and precio != "" and stock != "" and foto!="":
+                añadirCarrito=carroCompra(producto, descripcion, precio, stock, foto)
+                
+                añadirCarrito.save()
+
+                context={'mensaje': 'Guardado'}
+
+            return render(request,"characters/producto.html", context)
+
+
+def AgregarProductos(request):
+    print("Estoy en productos")
+    context = {}
+    return render(request, 'characters/agregarProducto.html', context)
+
+def agregarProducto(request):
+    print("Estoy en el carrito culiao")
+    context={}
+    if request.method=="POST":
+        print("Estoy dentro del post")
+        opcion = request.POST.get("opcion", "")
+        print("opcion="+opcion)
+        if opcion == "agregarProducto":
+            print("Mandemos la wea")
+            producto = request.POST["producto"]
+            descripcion = request.POST["descripcion"]
+            precio = request.POST["precio"]
+            stock = request.POST["stock"]
+            foto = request.FILE["foto"]
+
+            if producto != "" and descripcion != "" and precio != "" and stock != "" and foto!="":
+                añadirCarrito=Producto(producto, descripcion, precio, stock, foto)
+                
+                añadirCarrito.save()
+
+                context={'mensaje': 'Guardado'}
+
+    return render(request,'characters/agregarProducto.html', context)
 
 
 def agregarUsuario(request):

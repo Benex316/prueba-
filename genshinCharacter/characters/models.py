@@ -32,9 +32,30 @@ class Usuario(models.Model):
     def __str__(self):
         return self.id_cuenta+", "+self.nombre+", "+self.contraseña
     
+class carroCompra(models.Model):
+    id_compra=models.AutoField(db_column='id_producto', primary_key=True)
+    foto  = models.ImageField(upload_to='fotos', blank=True, null=True)
+    producto = models.CharField(max_length=99, blank=False)
+    descripcion=models.CharField(max_length=999, blank=False)
+    precio = models.CharField(max_length=99, blank=False)
+    stock = models.CharField(max_length=99, blank=False)
 
+    def __str__(self):
+        return self.id_compra+", "+self.foto.__str__()+", "+self.producto+", "+self.descripcion+", "+self.precio+", "+self.stock 
     
 
+    
+class Producto(models.Model):
+    id_producto=models.AutoField(db_column='id_producto', primary_key=True)
+    foto  = models.ImageField(upload_to='fotos', blank=True, null=True)
+    producto = models.CharField(max_length=99, blank=False)
+    descripcion=models.CharField(max_length=999, blank=False)
+    precio = models.CharField(max_length=99, blank=False)
+    stock = models.CharField(max_length=99, blank=False)
+
+    def __str__(self):
+        return self.id_producto+", "+self.foto.__str__()+", "+self.producto+", "+self.descripcion+", "+self.precio+", "+self.stock 
+    
             
 
     
