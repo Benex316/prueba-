@@ -1,46 +1,72 @@
 {% extends 'characters/base.html' %}
-
-
-
 {% load static %}
 
 <body>
     {% block content %}
-    <br><br><br><br>
+
+    <h1 align="center">Personajes</h1><br>
     <div class="container">
         <div class="row">
-            <form action="#" method="# " name="formulario" id="formulario">
-            <img src="{% static '/media/fotos/GI.png' %}" width="150px" alt="My image">
-            {% for product in precio %}
-            <p>{{ product.precio }}</p>
-            <p>{{ product.stock }}</p>
+            <div class="col-xs-12 col-sm-6 col-ms-4">
+                <table class="table" align="left">
+                    {%if personaje %}
+
+                    <thead>
+                        <tr>
+                            <th scope="col">Foto</th>
+                            <th scope="col">Nombre</th>
+                            <th scope="col">Cumpleaños</th>
+                            <th scope="col">Edad</th>
+                            <th scope="col">Region</th>
+                            <th scope="col">Visión</th>
+                            <th scope="col">Afiliación</th>
+                            <th scope="col">Constelación</th>
+                            <th scope="col">Genero</th>
+                    </thead>
 
 
-            {% endfor %}
-            <p>Juego Genshin Impact</p>
-            <p style="text-align: left;">Lorem ipsum dolor sit amet consectetur adipisicing elit. Ex consectetur
-                officiis nesciunt fuga tenetur
-                ipsum cupiditate animi quod possimus cumque. Numquam laudantium corporis est </p>
-            <div class="form-group">
-                <label for="compra">Eliga la cantidad que va a comprar</label>
-                <select class="form-control" id="compra">
-                    <option>1</option>
-                    <option>2</option>
-                    <option>3</option>
-                    <option>4</option>
-                    <option>5</option>
-                </select>
+                    {% for x in personaje %}
+
+
+                    <tbody>
+                        <tr>
+                            <td> {{x.foto}}</td>
+                            <td> {{x.nombre}}</th>
+                            <td> {{x.cumpleaños}}</th>
+                            <td> {{x.edad}}</th>
+                            <td> {{x.region}}</th>
+                            <td> {{x.vision}}</th>
+                            <td> {{x.afiliacion}}</th>
+                            <td> {{x.constelacion}}</th>
+                            <td> {{x.genero}}</th>
+
+
+
+                        </tr>
+
+                    </tbody>
+                    {% endfor %}
+                    {% endif %}
+                </table>
+                <br><br>
+                <a href="{% url 'index' %}">Volver</a>
+
+
+
+
             </div>
 
         </div>
-        <br><br>
-        <div class="row">
 
-            <button type="submit" class="btn btn-primary" name="opcion" value="productoc" id="productoc">Agregar al
-                carrito
-                de compra</button>
-        </div>
+
+
+
     </div>
+
+
+
     {% endblock %}
 
 </body>
+
+</html>

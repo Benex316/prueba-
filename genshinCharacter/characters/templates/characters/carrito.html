@@ -10,23 +10,20 @@
 
     <div class="container">
         <div class="container">
-            <div class="row">
-                <div class="col-sm">
-                    <img src="{% static '/media/fotos/GI.png' %}" width="150px" alt="My image">
-                </div>
-                <div class="col-sm">
-                    Juego Genshin Impact
-                </div>
-                <div class="col-xm">
-                    {{ products.precio }}
-                </div>
-                <div class="col-sm">
-                    5
-                </div>
-                <div class="col-sm">
-                    $15000
+            {%if personaje %}
+            {% for x in personaje %}
+            <div class="card" style="width: 18rem;">
+                {{x.foto}}
+                <div class="card-body">
+                    <h5 class="card-title">{{x.nombre}}</h5>
+                    <p class="card-text">{{x.afiliacion}}</p>
+                    <a href="#" class="btn btn-primary">Comprar</a>
+                    
                 </div>
             </div>
+            <br>
+            {% endfor %}
+            {% endif %}
         </div>
         <br>
         <div class="row">
@@ -39,10 +36,8 @@
 
         </div>
     </div>
+
+    <p></p>
     {% endblock %}
 </body>
 
-<footer>
-    <p> Total de compras: {{ compras }}</p>
-    <button type="submit" class="btn btn-primary" name="opcion" value="Ingresar" id="comprar">comprar</button>
-</footer>

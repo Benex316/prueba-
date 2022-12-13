@@ -223,8 +223,9 @@ def producto(request):
 
 
 def carrito(request):
-    print("Productos")
-    context = {}
+    print("carrito")
+    personajes = Personaje.objects.all()
+    context = {'personaje':personajes}
     return render(request, 'characters/carrito.html', context)
 
 

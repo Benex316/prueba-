@@ -3,15 +3,16 @@
 
 <body>
     {% block content %}
+    <br><br><br><br>
 
     <h1 align="center">Personajes</h1><br>
     <div class="container">
         <div class="row">
             <div class="col-xs-12 col-sm-6 col-ms-4">
                 <table class="table" align="left">
-                        {%if personaje %}
-                
-                        <thead>
+                    {%if personaje %}
+
+                    <thead>
                         <tr>
                             <th scope="col">Foto</th>
                             <th scope="col">Nombre</th>
@@ -22,50 +23,52 @@
                             <th scope="col">Afiliación</th>
                             <th scope="col">Constelación</th>
                             <th scope="col">Genero</th>
-                        </thead>
+                    </thead>
 
-                
-                        {% for x in personaje %}
-                
 
-                        <tbody>
-                            <tr>
-                                <td> {{x.foto}}</td>
-                                <td> {{x.nombre}}</th>
-                                <td> {{x.cumpleaños}}</th>
-                                <td> {{x.edad}}</th>
-                                <td> {{x.region}}</th>
-                                <td> {{x.vision}}</th>
-                                <td> {{x.afiliacion}}</th>
-                                <td> {{x.constelacion}}</th>
-                                <td> {{x.genero}}</th>
-                        
-                            
+                    {% for x in personaje %}
 
-                            </tr>
-                
-                        </tbody>
-                        {% endfor %}
+
+                    <tbody>
+                        <tr>
+                            <td> {{x.foto}}</td>
+                            <td> {{x.nombre}}</th>
+                            <td> {{x.cumpleaños}}</th>
+                            <td> {{x.edad}}</th>
+                            <td> {{x.region}}</th>
+                            <td> {{x.vision}}</th>
+                            <td> {{x.afiliacion}}</th>
+                            <td> {{x.constelacion}}</th>
+                            <td> {{x.genero}}</th>
+
+
+
+                        </tr>
+
+                    </tbody>
+                    {% endfor %}
                     {% endif %}
-                    </table>
-                    <br><br>
-                    <a href="{% url 'index' %}">Volver</a>
-                    
+                </table>
+                <br><br>
+                <a href="{% url 'index' %}">Volver</a><br><br>
+                <a href="carrito"<button type="submit" class="btn btn-primary" name="opcion" value="Ingresar">Agregar al carrito</button></a>
 
-                    
+
+
 
             </div>
 
         </div>
 
-        
+
 
 
     </div>
 
 
-    
+
     {% endblock %}
-    
+
 </body>
+
 </html>
