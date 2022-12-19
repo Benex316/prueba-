@@ -59,7 +59,7 @@ TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
         'DIRS': [
-            os.path.join(BASE_DIR, 'templates'),
+            os.path.join(BASE_DIR/ "templates"),
         ],
         'APP_DIRS': True,
         'OPTIONS': {
@@ -73,6 +73,9 @@ TEMPLATES = [
         },
     },
 ]
+
+LOGIN_REDIRECT_URL="index"
+LOGOUT_REDIRECT_URL="index"
 
 WSGI_APPLICATION = 'genshinCharacter.wsgi.application'
 

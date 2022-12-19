@@ -36,13 +36,13 @@
   <nav class="navbar fixed-top navbar-expand-lg" style="background-color: #e3f2fd;">
 
     <img src="{% static '/media/fotos/GI.png' %}" width="150px" alt="My image">
-    <a class="navbar-brand" href="personajes">Productos</a>
+    <a class="navbar-brand" href="producto">Productos</a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
       aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
 
-    <a class="navbar-brand" href="login">Login</a>
+    <a class="navbar-brand" href="register">Registrarse</a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
       aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
@@ -53,15 +53,26 @@
       aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
+    
     <li class="nav-item dropdown">
       <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown4" role="button" data-toggle="dropdown"
         aria-haspopup="true" aria-expanded="false">
-        admin
+
+        {% if user.is_authenticated %} 
+          {{user.username}}
+
+        {%else%}
+        
+        <a href="{% url 'login' %}">Login</a>
+
+        {%endif%}
+
+  
       </a>
       <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-        <a class="dropdown-item" href="{%url 'index'%}">Menú principal</a>
+        <a class="dropdown-item" href="{%url 'logout'%}">Cerrar sessión</a>
         <div class="dropdown-divider"></div>
-        <a class="dropdown-item" href="{%url 'index'">Cerrar sessión</a>
+        
       </div>
     </li>
     </div>

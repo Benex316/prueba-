@@ -21,9 +21,11 @@ from django.contrib.staticfiles.urls import staticfiles_urlpatterns
 from django.conf.urls.static import static
 
 
+
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('characters/', include('characters.urls'))
+    path('characters/', include('characters.urls')),
+    path("accounts/", include("django.contrib.auth.urls"))
 ]
 
 urlpatterns += staticfiles_urlpatterns()

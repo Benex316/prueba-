@@ -11,8 +11,6 @@ urlpatterns = [
     path('agregarPersonaje', views.agregarPersonaje, name="agregarPersonaje"),
     path('personaje_edit/<str:pk>', views.personaje_edit, name="personaje_edit"),
     path('personaje_del/<str:pk>', views.personaje_del, name="personaje_del"),
-    path('login', views.login, name="login"),
-    path('loginData', views.loginData, name="loginData"),
     path('quienesSomos', views.quienesSomos, name="quienesSomos"),
     path('listarPersonaje', views.listarPersonaje, name="listarPersonaje"),
     path('personajes', views.personajes, name="personajes"),
@@ -21,5 +19,6 @@ urlpatterns = [
     path('carrito', views.carrito, name="carrito"),
     path('agregarCarrito', views.agregarCarrito, name="agregarCarrito"),
     path('agregarProducto', views.agregarProducto, name="agregarProducto"),
-    path('AgregarProductos', views.AgregarProductos, name='AgregarProductos')
+    path('AgregarProductos', views.AgregarProductos, name='AgregarProductos'),
+    path('register', views.register, name='register')
 ]

@@ -9,44 +9,24 @@
         <div class="row">
             <div class="col-xs-12 col-sm-6 col-ms-4">
                 <table class="table" align="left">
-                    {%if personaje %}
-
-                    <thead>
-                        <tr>
-                            <th scope="col">Foto</th>
-                            <th scope="col">Nombre</th>
-                            <th scope="col">Cumpleaños</th>
-                            <th scope="col">Edad</th>
-                            <th scope="col">Region</th>
-                            <th scope="col">Visión</th>
-                            <th scope="col">Afiliación</th>
-                            <th scope="col">Constelación</th>
-                            <th scope="col">Genero</th>
-                    </thead>
-
-
                     {% for x in personaje %}
+                    
+                    <div class="card" style="width: 18rem;">
+                        <img src="{{x.foto.url}}" class="card-img-top" alt="...">
+                        <div class="card-body">
+                          <h5 class="card-title">{{x.nombre}}</h5>
+                          <p class="card-text">{{x.descripcion}}</p>
+                          <a href="#" class="btn btn-primary">Mas información</a>
+                        </div>
+                      </div>
 
 
-                    <tbody>
-                        <tr>
-                            <td> {{x.foto}}</td>
-                            <td> {{x.nombre}}</th>
-                            <td> {{x.cumpleaños}}</th>
-                            <td> {{x.edad}}</th>
-                            <td> {{x.region}}</th>
-                            <td> {{x.vision}}</th>
-                            <td> {{x.afiliacion}}</th>
-                            <td> {{x.constelacion}}</th>
-                            <td> {{x.genero}}</th>
+                    
 
 
-
-                        </tr>
-
-                    </tbody>
+                    
                     {% endfor %}
-                    {% endif %}
+                    
                 </table>
                 <br><br>
                 <a href="{% url 'index' %}">Volver</a>

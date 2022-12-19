@@ -1,0 +1,14 @@
+{% extends 'characters/base.html' %}
+
+{%block content%}
+
+<h1> Register</h1>
+
+<form method="POST">
+    {% csrf_token %}
+    {{form.as_p}}
+
+    <button type="submit">Crear Usuario</button>
+</form>
+
+{%endblock content%}

@@ -1,42 +1,31 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from .models import Personaje, Usuario, carroCompra, Producto
 from datetime import datetime
+from django.contrib.auth.decorators import login_required
+from django.contrib.auth.forms import UserCreationForm
+from django.contrib import messages
 
 # Create your views here.
 
 
-def login(request):
-    print("Login")
-    context = {}
+def register(request):
+    if request.method=="POST":
+        form = UserCreationForm(request.POST)
+        if form.is_valid():
+            form.save()
 
-    return render(request, "characters/login.html", context)
+        messages.success(request, "Tu cuenta ha sido creada exitosamente")
+        return redirect('index')
 
 
-def loginData(request):
-    print("Login")
-    Usuarios = ["admin, Gioro"]
-    Contraseñas = ["admin,123"]
+    else:
+        form = UserCreationForm()
 
-    if request.method == "POST":
-        print("Post")
-        opcion = request.POST.get("opcion")
+        
+    return render(request, "characters/register.html", {'form': form})
 
-        if opcion == "Ingresar":
-            print("Validar")
 
-            usuario = request.POST["usuario"]
-            contraseña = request.POST["contraseña"]
 
-            if usuario in Usuarios and contraseña in Contraseñas:
-
-                print("Validado")
-                context = {"usuario": usuario, "contraseña": contraseña}
-
-                return render(request, "characters/quienesSomos.html", context)
-            else:
-                print("No validado")
-                context = {}
-                return render(request, "characters/error.html", context)
 
 
 def index(request):
@@ -60,8 +49,8 @@ def colaborador(request):
 def crud_personajes(request):
 
     print("hola  estoy en crud_alumnes...")
-    personajes = Personaje.objects.all()  # select * from Alumne
-    context = {'personajes': personajes}
+    personaje = Personaje.objects.all()  # select * from Alumne
+    context = {'personaje': personaje}
     return render(request, 'characters/agregarPersonaje.html', context)
 
 
@@ -198,15 +187,15 @@ def personaje_del(request, pk):
 
 def listarPersonaje(request):
     print("hola  estoy en personaje...")
-    personajes = Personaje.objects.all()
-    context = {'personaje': personajes}
+    personaje = Personaje.objects.all()
+    context = {'personaje': personaje}
     return render(request, 'characters/listarPersonaje.html', context)
 
 
 def personajes(request):
     print("hola  estoy en personaje...")
-    personajes = Personaje.objects.all()
-    context = {'personaje': personajes}
+    personaje = Personaje.objects.all()
+    context = {'personaje': personaje}
     return render(request, "characters/personajes.html", context)
 
 
@@ -217,15 +206,15 @@ def administracion(request):
 
 
 def producto(request):
-    print("Productos")
-    context = {}
+    personaje = Personaje.objects.all()
+    context = {'personaje': personaje}
     return render(request, 'characters/producto.html', context)
 
 
 def carrito(request):
     print("carrito")
-    personajes = Personaje.objects.all()
-    context = {'personaje':personajes}
+    personaje = Personaje.objects.all()
+    context = {'personaje':personaje}
     return render(request, 'characters/carrito.html', context)
 
 
