@@ -4,6 +4,7 @@ from datetime import datetime
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib import messages
+from django.urls import reverse
 
 # Create your views here.
 
@@ -49,8 +50,8 @@ def colaborador(request):
 def crud_personajes(request):
 
     print("hola  estoy en crud_alumnes...")
-    personaje = Personaje.objects.all()  # select * from Alumne
-    context = {'personaje': personaje}
+    producto = Producto.objects.all()  # select * from Alumne
+    context = {'producto': producto}
     return render(request, 'characters/agregarPersonaje.html', context)
 
 
@@ -206,8 +207,8 @@ def administracion(request):
 
 
 def producto(request):
-    personaje = Personaje.objects.all()
-    context = {'personaje': personaje}
+    producto = Producto.objects.all()
+    context = {'producto': producto}
     return render(request, 'characters/producto.html', context)
 
 
@@ -301,3 +302,32 @@ def agregarUsuario(request):
                     'mensaje': "Error, no se pudo guardar, los datos estan vacios"}
 
         return render(request, "characters/crearUsuario.html", context)
+
+@login_required
+def personaje_del(request, pk):
+    print("Eliminar personaje... pk="+pk)
+    mensajes=[]
+    errores=[]
+    personaje = Personaje.objects.all()
+    try:
+        personaje=Personaje.objects.get(id_personaje=pk) #Hay algo mal acá, por alguna razon tira object is not iterable pero de todos modos procede a borrar como si nada
+        context={}
+        if personaje:
+           personaje.delete()
+           mensajes.append("Datos elimiados")
+
+           context = {'personaje': personaje,  'mensajes': mensajes, 'errores':errores}
+
+        return render(request, 'characters/carrito.html', context)
+
+    except:
+        print("Error, Personaje no existe")
+        errores.append("Personaje no encontrado")
+        context = {'personaje': personaje,  'mensajes': mensajes, 'errores':errores}
+        return render(request, 'characters/carrito.html', context) 
+
+
+@login_required
+
+def agregarCarrito(request, pk):
+    print("Pinche carrito de compra, acaso estoy trabajando para Epic Games que tanta importancia le dan?!")

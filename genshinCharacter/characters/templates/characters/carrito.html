@@ -6,33 +6,41 @@
 
 <body>
     {% block content %}
-    <br><br><br><br><br><br><br><br><br><br>
+    <br><br><br>
 
+    <h1 align="center">Carrito de Compra</h1><br>
     <div class="container">
-        <div class="container">
-            {%if personaje %}
-            {% for x in personaje %}
-            <div class="card" style="width: 18rem;">
-                {{x.foto}}
-                <div class="card-body">
-                    <h5 class="card-title">{{x.nombre}}</h5>
-                    <p class="card-text">{{x.afiliacion}}</p>
-                    <a href="#" class="btn btn-primary">Comprar</a>
-                    
-                </div>
-            </div>
-            <br>
-            {% endfor %}
-            {% endif %}
-        </div>
-        <br>
         <div class="row">
-            <button type="submit" class="btn btn-primary" name="opcion" value="Ingresar" id="elimi">Eliminar del
-                carrito</button>
+            <div class="col-xs-12 col-sm-6 col-ms-4">
 
-            <button type="submit" class="btn btn-primary" name="opcion" value="Ingresar" id="limpiar"
-                style="margin-left: 10%;">limpiar
-                carrito</button>
+                {% for x in producto %}
+                
+                <div class="card" style="width: 13rem;">
+                    <img src="{{x.foto.url}}" class="card-img-top" alt="..." height="430px">
+                    <div class="card-body">
+                        <h5 class="card-title">{{x.nombre}}</h5>
+                        <p class="card-text">{{x.descripcion}}</p>
+                        <p class="card-text">Precio: {{x.precio}}</p>
+                        <p class="card-text">Stock: {{x.stock}}</p>
+                        <a href="{% url 'personaje_del' pk=x.id_personaje %}" class="btn btn-primary">Comprar</a>
+                    </div>
+                </div>
+
+                {% endfor %}
+
+            </div>
+    
+
+            
+
+
+            
+    </div>
+
+        <div class="row">
+            <button type="submit cleanense" class="btn btn-danger" name="opcion" value="Ingresar" id="limpiar"
+                style="margin-left: 18%;">Limpiar Carrito
+            </button>
 
         </div>
     </div>

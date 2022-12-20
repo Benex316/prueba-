@@ -18,8 +18,8 @@ class Personaje(models.Model):
 
     def __str__(self):
         return str(self.id_personaje)+", "+str(self.fecha_cumpleaños)+", "\
-                +str(self.nombre)+", "+str(self.edad)+", "+str(self.region)+", "+str(self.region)+", "+str(self.vision)+", "\
-                +str(self.afiliacion)+", "+str(self.constelacion)+", "+str(self.genero)+", "+self.foto.__str__()
+                +self.nombre+", "+self.edad+", "+self.region+", "+self.region+", "+self.vision+", "\
+                +self.afiliacion+", "+self.constelacion+", "+self.genero+", "+self.foto.__str__()
 
 
     def cargarFoto(instance, filename):
@@ -43,7 +43,7 @@ class carroCompra(models.Model):
     
 
     def __str__(self):
-        return self.id_compra+", "+self.fotoCompra.__str__()+", "+self.productoCompra+", "+self.descripcionCompra+", "+self.precioCompra+", "+self.stockCompra 
+        return str(self.id_compra)+", "+self.fotoCompra.__str__()+", "+self.productoCompra+", "+self.descripcionCompra+", "+self.precioCompra+", "+self.stockCompra 
     
 
     
@@ -56,7 +56,7 @@ class Producto(models.Model):
     stock = models.CharField(max_length=99, blank=False)
 
     def __str__(self):
-        return self.id_producto+", "+self.foto.__str__()+", "+self.producto+", "+self.descripcion+", "+self.precio+", "+self.stock 
+        return str(self.id_producto)+", "+self.foto.__str__()+", "+self.producto+", "+self.descripcion+", "+self.precio+", "+self.stock 
     
        
 class Venta(models.Model):
@@ -66,7 +66,7 @@ class Venta(models.Model):
     stockComprado=models.CharField(max_length=99, blank=False)
 
     def __str__(self):
-        return self.id_venta+", "+self.productoVenta+", "+self.precioVenta+", "+self.stockComprado
+        return str(self.id_venta)+", "+self.productoVenta+", "+self.precioVenta+", "+self.stockComprado
 
 class Cliente(models.Model):
     id_ClienteVenta=models.AutoField(db_column="id_ClienteVenta", primary_key=True)
@@ -74,11 +74,11 @@ class Cliente(models.Model):
 
 
     def __str__(self):
-        return self.id_ClienteVenta+", "+self.cliente
+        return str(self.id_ClienteVenta)+", "+self.cliente
 
 class Detalle(models.Model):
     id_descripcion=models.AutoField(db_column="id_descripcion", primary_key=True)
     descripcionVenta=models.CharField(max_length=99, blank=False)
     
     def __str__(self):
-        return self.id_descripcion+", "+self.descripcionVenta
+        return str(self.id_descripcion)+", "+self.descripcionVenta
